@@ -211,7 +211,7 @@ footer b{color:var(--cyan)}
 .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.7,.2,1)}
 .reveal.active{opacity:1;transform:none}
 
-/* Floating profile image */
+/* Fixed profile image — no floating animation */
 .floating-photo{
   position:fixed;
   top:90px;
@@ -226,7 +226,6 @@ footer b{color:var(--cyan)}
   overflow:hidden;
   background:rgba(4,7,13,.55);
   backdrop-filter:blur(10px);
-  animation:floatPhoto 5s ease-in-out infinite;
 }
 .floating-photo img{
   width:100%;
@@ -253,10 +252,6 @@ footer b{color:var(--cyan)}
   color:var(--cyan);
   text-shadow:0 0 10px rgba(0,255,213,.7);
 }
-@keyframes floatPhoto{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
 @media(max-width:900px){
   .floating-photo{
     width:120px;
@@ -273,7 +268,7 @@ footer b{color:var(--cyan)}
 <div class="grid-overlay"></div>
 <div class="noise"></div>
 
-<!-- Floating profile image -->
+<!-- Fixed profile image -->
 <div class="floating-photo">
   <img src="profile.png" alt="Syad Mehedi Hasan Alvi">
   <div class="floating-label">ALVI.EXE</div>
@@ -465,138 +460,4 @@ footer b{color:var(--cyan)}
         <div class="card reveal">
           <h3>UIU HR Forum — HR Executive</h3>
           <small style="color:var(--cyan);font-family:'JetBrains Mono',monospace">Apr 2025 – Nov 2026</small>
-          <p>Managed the CaseCation Season 3 partnership with Rajshahi University Business Club and helped deliver Professional Skills Development Program 4.0.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Amar Fuel — Marketing Intern</h3>
-          <small style="color:var(--cyan);font-family:'JetBrains Mono',monospace">Nov 2026 – Present</small>
-          <p>Drive brand promotion and content creation for an AI-powered fuel-automation and IoT startup, supporting business development and corporate outreach.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Quantum Curiosity — Technical Educator</h3>
-          <small style="color:var(--cyan);font-family:'JetBrains Mono',monospace">2024 – Present</small>
-          <p>Create educational YouTube content on algorithms and computational reasoning, strengthening technical communication and public speaking.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Outlier AI — AI Trainer & Evaluator</h3>
-          <small style="color:var(--cyan);font-family:'JetBrains Mono',monospace">2026 | Remote</small>
-          <p>Conducted RLHF for large language models, including quality assurance, evaluation, and error analysis.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="awards">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="tag">// RECOGNITION</div>
-        <h2>Awards & Achievements</h2>
-        <p>Recognition across coding, hackathons, business strategy, and academic performance.</p>
-      </div>
-      <div class="cards">
-        <div class="card reveal">
-          <h3>GeeksforGeeks — Institute Rank 1</h3>
-          <p>142-day Problem of the Day streak, coding score 840, and 181 problems solved.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Hackathon Awards</h3>
-          <p>Awarded a total of $200 in Codex Credits — $100 each for Dhaka TechMatch and LastCall Eats.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Young CEO Challenge 2026</h3>
-          <p>Certificate of Participation from PACE & UITM for supply-chain resilience strategy in a competitive business simulation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="tag">// TRANSMISSION</div>
-        <h2>Let’s Build Something</h2>
-        <p>Open to collaboration on AI, robotics, IoT, software products, hackathons, research prototypes, and creative technology projects.</p>
-      </div>
-      <div class="contact-grid">
-        <a class="contact-card reveal" href="mailto:syadalvi@gmail.com">
-          <b>Email</b><span>syadalvi@gmail.com</span>
-        </a>
-        <a class="contact-card reveal" href="tel:+8801810761093">
-          <b>Phone</b><span>+880 1810 761093</span>
-        </a>
-        <a class="contact-card reveal" href="https://github.com/alvi164" target="_blank">
-          <b>GitHub</b><span>github.com/alvi164</span>
-        </a>
-        <a class="contact-card reveal" href="https://linkedin.com/in/syad-mehedi-hasan-alvi" target="_blank">
-          <b>LinkedIn</b><span>syad-mehedi-hasan-alvi</span>
-        </a>
-        <a class="contact-card reveal" href="https://youtube.com/@edu.quantumcuriosity" target="_blank">
-          <b>YouTube</b><span>@edu.quantumcuriosity</span>
-        </a>
-        <a class="contact-card reveal" href="https://www.geeksforgeeks.org/profile/salvi222164" target="_blank">
-          <b>GeeksforGeeks</b><span>salvi222164</span>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>© <span id="year"></span> <b>Syad Mehedi Hasan Alvi</b> — Engineered for the future.</p>
-</footer>
-
-<script>
-const canvas=document.getElementById('stars');
-const ctx=canvas.getContext('2d');
-let stars=[],w,h;
-
-function resize(){
-  w=canvas.width=innerWidth;
-  h=canvas.height=innerHeight;
-  stars=Array.from({length:Math.min(170,Math.floor(w*h/9000))},()=>({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    r:Math.random()*1.5+.3,
-    vx:(Math.random()-.5)*.25,
-    vy:(Math.random()-.5)*.25,
-    a:Math.random()
-  }));
-}
-
-function animate(){
-  ctx.clearRect(0,0,w,h);
-  stars.forEach(s=>{
-    s.x+=s.vx;
-    s.y+=s.vy;
-    s.a+=.02;
-
-    if(s.x<0)s.x=w;
-    if(s.x>w)s.x=0;
-    if(s.y<0)s.y=h;
-    if(s.y>h)s.y=0;
-
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(0,255,213,${.25+Math.abs(Math.sin(s.a))*.45})`;
-    ctx.fill();
-  });
-  requestAnimationFrame(animate);
-}
-
-resize();
-animate();
-addEventListener('resize',resize);
-
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('active');
-    }
-  });
-},{threshold:.12});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
-</body>
-</html>
+          <p>Managed
