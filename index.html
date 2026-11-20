@@ -210,10 +210,60 @@ footer{
 footer b{color:var(--cyan)}
 .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.7,.2,1)}
 .reveal.active{opacity:1;transform:none}
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .nav-links a:not(.cta){display:none}
+
+/* Floating profile image */
+.floating-photo{
+  position:fixed;
+  top:90px;
+  right:22px;
+  z-index:120;
+  width:190px;
+  height:230px;
+  border-radius:20px;
+  border:1px solid rgba(0,255,213,.45);
+  box-shadow:0 0 35px rgba(0,255,213,.28),
+             0 20px 45px rgba(0,0,0,.55);
+  overflow:hidden;
+  background:rgba(4,7,13,.55);
+  backdrop-filter:blur(10px);
+  animation:floatPhoto 5s ease-in-out infinite;
+}
+.floating-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.floating-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,255,213,.16));
+  pointer-events:none;
+}
+.floating-label{
+  position:absolute;
+  bottom:10px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.62rem;
+  letter-spacing:2px;
+  color:var(--cyan);
+  text-shadow:0 0 10px rgba(0,255,213,.7);
+}
+@keyframes floatPhoto{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+@media(max-width:900px){
+  .floating-photo{
+    width:120px;
+    height:150px;
+    top:78px;
+    right:14px;
+  }
 }
 </style>
 </head>
@@ -222,6 +272,12 @@ footer b{color:var(--cyan)}
 <canvas id="stars"></canvas>
 <div class="grid-overlay"></div>
 <div class="noise"></div>
+
+<!-- Floating profile image -->
+<div class="floating-photo">
+  <img src="profile.png" alt="Syad Mehedi Hasan Alvi">
+  <div class="floating-label">ALVI.EXE</div>
+</div>
 
 <header>
   <nav class="nav">
@@ -493,20 +549,32 @@ footer b{color:var(--cyan)}
 const canvas=document.getElementById('stars');
 const ctx=canvas.getContext('2d');
 let stars=[],w,h;
+
 function resize(){
   w=canvas.width=innerWidth;
   h=canvas.height=innerHeight;
   stars=Array.from({length:Math.min(170,Math.floor(w*h/9000))},()=>({
-    x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.3,
-    vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,a:Math.random()
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:Math.random()*1.5+.3,
+    vx:(Math.random()-.5)*.25,
+    vy:(Math.random()-.5)*.25,
+    a:Math.random()
   }));
 }
+
 function animate(){
   ctx.clearRect(0,0,w,h);
   stars.forEach(s=>{
-    s.x+=s.vx;s.y+=s.vy;s.a+=.02;
-    if(s.x<0)s.x=w;if(s.x>w)s.x=0;
-    if(s.y<0)s.y=h;if(s.y>h)s.y=0;
+    s.x+=s.vx;
+    s.y+=s.vy;
+    s.a+=.02;
+
+    if(s.x<0)s.x=w;
+    if(s.x>w)s.x=0;
+    if(s.y<0)s.y=h;
+    if(s.y>h)s.y=0;
+
     ctx.beginPath();
     ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
     ctx.fillStyle=`rgba(0,255,213,${.25+Math.abs(Math.sin(s.a))*.45})`;
@@ -514,13 +582,20 @@ function animate(){
   });
   requestAnimationFrame(animate);
 }
-resize();animate();addEventListener('resize',resize);
+
+resize();
+animate();
+addEventListener('resize',resize);
 
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')});
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('active');
+    }
+  });
 },{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
