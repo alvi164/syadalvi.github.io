@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syad Mehedi Hasan Alvi | Portfolio</title>
+    <meta name="description" content="Portfolio of Syad Mehedi Hasan Alvi - CSE Student, Software Engineer, and Tech Leader.">
+    
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --card-bg: #1e293b;
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        section:last-child { border-bottom: none; }
+        
+        h2 { font-size: 2rem; margin-bottom: 30px; color: var(--accent); }
+        h3 { font-size: 1.25rem; margin-bottom: 5px; color: var(--text-main); }
+        
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100;
+        }
+        .nav-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1000px; margin: 0 auto; padding: 15px 20px;
+        }
+        .logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; margin-left: 20px;
+            transition: color 0.3s; font-size: 0.9rem;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; padding-top: 60px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; }
+        
+        .social-links a {
+            display: inline-block; margin-right: 15px; padding: 10px 20px;
+            border: 1px solid var(--accent); border-radius: 5px; color: var(--accent);
+            text-decoration: none; transition: all 0.3s;
+        }
+        .social-links a:hover { background: var(--accent); color: var(--bg-color); }
+
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .skill-category { background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .skill-category h4 { color: var(--accent); margin-bottom: 10px; }
+        .skill-category p { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* Projects Grid */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .project-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+            padding: 25px; transition: transform 0.3s, border-color 0.3s;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .project-card a { color: var(--text-main); text-decoration: none; }
+        .project-card a:hover { color: var(--accent); }
+        .tech-stack {
+            display: inline-block; font-size: 0.8rem; color: var(--accent);
+            background: rgba(56, 189, 248, 0.1); padding: 4px 10px; border-radius: 15px; margin-bottom: 15px;
+        }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        
+        /* Experience Timeline */
+        .timeline { border-left: 2px solid var(--border); padding-left: 20px; margin-left: 10px; }
+        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -27px; top: 5px;
+            width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+        }
+        .timeline-date { font-size: 0.85rem; color: var(--accent); margin-bottom: 5px; font-weight: bold; }
+        .timeline-item ul { margin-top: 10px; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Hide nav links on mobile for simplicity */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo">ALVI.DEV</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="hero" id="about">
+            <div>
+                <h1>Syad Mehedi<br>Hasan Alvi</h1>
+                <p>Computer Science Student at UIU. Building robust software, autonomous systems, and driving tech-forward marketing. Inspired by aerial robotics and solving complex problems for Bangladesh.</p>
+                <div class="social-links">
+                    <a href="https://github.com/alvi164" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/syad-mehedi-hasan-alvi" target="_blank">LinkedIn</a>
+                    <a href="mailto:syadalvi@gmail.com">Email Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section>
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <p>Python, Java, C++, Kotlin, TypeScript, Embedded C</p>
+                </div>
+                <div class="skill-category">
+                    <h4>AI & Computer Vision</h4>
+                    <p>TensorFlow, Keras, OpenCV, NumPy, SciPy (Real-time inference)</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Systems & Software</h4>
+                    <p>Spring Boot, React 19, Firebase, Networking (TCP/UDP), REST APIs, Git</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Business & Outreach</h4>
+                    <p>Brand Promotion, Content Creation, Public Relations, Business Dev.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3><a href="https://github.com/alvi164/PLIS-1.1.0" target="_blank">PLIS 1.1.0 ↗</a></h3>
+                    <span class="tech-stack">Java, TCP/UDP, PowerShell</span>
+                    <p>Programming Lab Integrity Suite. Engineered a robust classroom monitoring system utilizing UDP multicast for auto-discovery and dynamic TCP ports for live code syncing. Built a custom Windows deployment pipeline via WiX.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><a href="https://github.com/alvi164/NeuroSketch-AI" target="_blank">NeuroSketch AI ↗</a></h3>
+                    <span class="tech-stack">Python, SciPy, Spring Boot</span>
+                    <p>Quantitative kinematic telemetry framework. Implemented real-time Butterworth filtering for tremor pattern detection (applicable to UAV sensor fusion). Architected decoupled REST APIs and PySide6 dashboards.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><a href="https://github.com/alvi164/Emotion-Detection-Core-Engine" target="_blank">Emotion Detection Engine ↗</a></h3>
+                    <span class="tech-stack">TensorFlow, Keras, OpenCV</span>
+                    <p>Trained a custom CNN from scratch for multi-class facial recognition. Optimized dependency alignment between TensorFlow and OpenCV to achieve high-frame-rate, real-time webcam inference.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><a href="https://github.com/alvi164/Emergency-Security-Calculator" target="_blank">Emergency Security Calculator ↗</a></h3>
+                    <span class="tech-stack">Kotlin, Android SDK</span>
+                    <p>Developed a stealth Android application camouflaged as a calculator. Leveraged Android hardware sensors to trigger background dual-camera video/audio recording upon detecting a triple-shake gesture.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><a href="https://github.com/alvi164/bashar-chabi-v2" target="_blank">Bashar Chabi v2 ↗</a></h3>
+                    <span class="tech-stack">React 19, TypeScript, Firebase</span>
+                    <p>Architected a mobile-first, bilingual (Bangla/English) Progressive Web App (PWA) featuring offline capabilities, strict state-machine validation, and role-based dashboards.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2>Experience & Leadership</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2026 - Present</div>
+                    <h3>Marketing Intern @ Amar Fuel</h3>
+                    <ul>
+                        <li>Drive brand promotion and content creation for an AI-powered fuel-automation and IoT startup.</li>
+                        <li>Participate in corporate meetings and business development to generate innovative campaign ideas.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2026 - Present</div>
+                    <h3>General Secretary @ UIU HR Forum</h3>
+                    <ul>
+                        <li>Lead the executive body of a university club serving 450+ participants, overseeing event operations and PR.</li>
+                        <li>Managed the club partnership with Rajshahi University Business Club for CaseCation Season 3.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3>Technical Educator @ Quantum Curiosity</h3>
+                    <ul>
+                        <li>Produce educational videos on algorithms and computational reasoning, honing technical communication skills.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AWARDS SECTION -->
+        <section>
+            <h2>Awards & Recognition</h2>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 15px; padding-left: 20px; border-left: 3px solid var(--accent);">
+                    <strong>Young CEO Challenge 2026</strong> - Awarded Certificate of Participation by PACE & UITM for strategizing supply chain resilience.
+                </li>
+                <li style="margin-bottom: 15px; padding-left: 20px; border-left: 3px solid var(--accent);">
+                    <strong>GeeksforGeeks Rank 1</strong> - 142-day Problem of the Day streak, Coding Score 840, 181 problems solved.
+                </li>
+                <li style="margin-bottom: 15px; padding-left: 20px; border-left: 3px solid var(--accent);">
+                    <strong>Hackathon Awards</strong> - Awarded $200 in Codex Credits for Dhaka TechMatch and LastCall Eats.
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.9rem;">
+        <p>© 2026 Syad Mehedi Hasan Alvi. Built for GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
