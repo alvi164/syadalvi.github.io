@@ -3,833 +3,1149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Syad Mehedi Hasan Alvi | Software & AI Portfolio</title>
-<meta name="description" content="Portfolio of Syad Mehedi Hasan Alvi — CSE student and builder of software, AI, IoT, Android, and full-stack web projects.">
+
+<title>Syad Mehedi Hasan Alvi | Student & Developer</title>
+
+<meta name="description"
+content="Syad Mehedi Hasan Alvi — CSE student building software, AI, Android, IoT, and full-stack web projects.">
+
 <meta name="theme-color" content="#0a0f16">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
+  color-scheme:dark;
   --bg:#0a0f16;
   --surface:#111823;
-  --surface-2:#151d29;
-  --border:rgba(255,255,255,.08);
+  --surface-hover:#151e2b;
+  --border:rgba(255,255,255,.09);
   --text:#e7edf4;
-  --muted:#9aa8b8;
-  --accent:#4f8cff;
-  --accent-2:#7ee0ff;
-  --success:#31d0aa;
+  --muted:#a3afbf;
+  --accent:#73b7ff;
+  --cyan:#83def5;
+  --green:#36cfa2;
+  --radius:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
+}
+
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:'Inter',system-ui,sans-serif;
-  line-height:1.65;
-  overflow-x:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+  -webkit-text-size-adjust:100%;
 }
-img{max-width:100%;display:block}
-a{color:inherit}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+a{
+  color:inherit;
+}
+
+button{
+  font:inherit;
+}
+
+a,button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a:focus-visible,button:focus-visible{
+  outline:3px solid var(--cyan);
+  outline-offset:5px;
+}
+
 .container{
-  width:100%;
-  max-width:1160px;
-  margin:auto;
-  padding:0 20px;
+  width:min(1120px,calc(100% - 48px));
+  margin-inline:auto;
 }
-header{
+
+.skip-link{
   position:fixed;
-  top:0;left:0;right:0;
-  z-index:100;
-  background:rgba(10,15,22,.88);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
+  top:-80px;
+  left:16px;
+  z-index:300;
+  background:var(--cyan);
+  color:#07121c;
+  padding:10px 18px;
+  border-radius:8px;
 }
+
+.skip-link:focus{
+  top:12px;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(10,15,22,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);
+}
+
 .nav{
+  min-height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
-  height:64px;
+  gap:20px;
 }
+
 .logo{
-  font-family:'Sora',sans-serif;
+  font-size:1.12rem;
   font-weight:800;
-  font-size:1rem;
-  letter-spacing:-.4px;
   text-decoration:none;
-  color:#fff;
+  letter-spacing:-.5px;
 }
-.logo span{color:var(--accent)}
-.desktop-links{
+
+.logo span{
+  color:var(--accent);
+}
+
+.nav-links{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
-.desktop-links a{
-  color:var(--muted);
+
+.nav-links a{
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:.87rem;
   text-decoration:none;
-  font-size:.88rem;
-  font-weight:500;
-  padding:9px 13px;
-  border-radius:10px;
-  transition:.2s;
+  color:var(--muted);
 }
-.desktop-links a:hover{
+
+.nav-links a:hover{
   color:#fff;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.05);
 }
-.nav-cta{
-  color:#06111d!important;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+
+.nav-links .nav-contact{
+  color:#07121c;
+  background:var(--accent);
   font-weight:700;
 }
-.menu-btn{
+
+.menu-toggle{
   display:none;
-  width:42px;
-  height:42px;
+  min-width:44px;
+  min-height:44px;
+  align-items:center;
+  justify-content:center;
   border:1px solid var(--border);
-  border-radius:12px;
-  background:rgba(255,255,255,.04);
-  color:#fff;
-  font-size:1.2rem;
+  background:var(--surface);
+  color:var(--text);
+  border-radius:11px;
   cursor:pointer;
 }
-.mobile-menu{
-  display:none;
-  position:fixed;
-  top:64px;
-  left:0;
-  right:0;
-  z-index:99;
-  background:rgba(10,15,22,.97);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  padding:14px 20px 20px;
+
+.menu-icon{
+  display:grid;
+  gap:5px;
 }
-.mobile-menu.open{display:block}
-.mobile-menu a{
-  display:block;
-  padding:13px 14px;
-  color:var(--text);
-  text-decoration:none;
-  font-weight:550;
-  border-radius:12px;
-  border:1px solid transparent;
+
+.menu-icon span{
+  width:19px;
+  height:2px;
+  background:currentColor;
 }
-.mobile-menu a:hover{
-  background:rgba(255,255,255,.05);
-  border-color:var(--border);
-}
-.mobile-menu .nav-cta{
-  margin-top:8px;
-  text-align:center;
-  color:#06111d!important;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-}
+
 .hero{
   position:relative;
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  padding:110px 0 70px;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;
-  inset:0;
+  padding:75px 0 65px;
   background:
-    radial-gradient(620px 380px at 82% 18%,rgba(79,140,255,.15),transparent 65%),
-    radial-gradient(520px 360px at 5% 75%,rgba(126,224,255,.09),transparent 60%);
+    radial-gradient(ellipse at 85% 15%,
+      rgba(70,133,225,.12),transparent 55%);
+}
+
+.hero-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(220px,.85fr);
+  align-items:center;
+  gap:48px;
+}
+
+/* The portrait occupies its own grid column.
+   It is not fixed or positioned over the text. */
+.profile-photo{
+  grid-column:2;
+  grid-row:1;
+  width:100%;
+  max-width:320px;
+  justify-self:end;
+  align-self:start;
+  margin-top:15px;
   pointer-events:none;
 }
-.hero-grid{
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:54px 54px;
-  mask-image:radial-gradient(circle at 50% 35%,black 0%,transparent 72%);
+
+.profile-photo img{
+  width:100%;
+  height:auto;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:none;
+  -webkit-mask-image:linear-gradient(
+    to bottom,#000 0%,#000 72%,transparent 100%
+  );
+  mask-image:linear-gradient(
+    to bottom,#000 0%,#000 72%,transparent 100%
+  );
 }
-.hero-inner{
-  position:relative;
-  z-index:2;
+
+.hero-copy{
+  grid-column:1;
+  grid-row:1;
+  min-width:0;
 }
+
 .eyebrow{
   display:inline-flex;
   align-items:center;
   gap:9px;
-  padding:7px 14px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  background:rgba(255,255,255,.04);
-  color:var(--accent-2);
-  font-size:.7rem;
-  font-weight:650;
-  letter-spacing:.08em;
+  max-width:100%;
+  color:var(--cyan);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.09em;
   text-transform:uppercase;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025);
+  padding:8px 12px;
+  border-radius:999px;
 }
-.eyebrow i{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--success);
-  box-shadow:0 0 0 4px rgba(49,208,170,.15);
+
+.status-dot{
+  flex:none;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
 }
+
 h1{
-  font-family:'Sora',sans-serif;
-  font-size:clamp(2rem,7.5vw,4.1rem);
-  line-height:1.08;
-  letter-spacing:-1.2px;
-  color:#fff;
-  margin:20px 0 16px;
+  font-size:clamp(2.25rem,4.4vw,3.65rem);
+  line-height:1.12;
+  letter-spacing:-.045em;
+  margin:22px 0;
+  color:#f5f8fc;
+  overflow-wrap:break-word;
 }
+
 .highlight{
-  background:linear-gradient(90deg,var(--accent-2),var(--accent));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:var(--accent);
 }
-.hero p{
-  max-width:680px;
+
+.intro{
   color:var(--muted);
-  font-size:1rem;
+  font-size:1.02rem;
+  max-width:650px;
 }
-.hero-actions{
+
+.intro strong{
+  color:var(--text);
+}
+
+.location{
+  color:var(--muted);
+  font-size:.86rem;
+  margin-top:15px;
+}
+
+.actions{
   display:flex;
   flex-wrap:wrap;
   gap:12px;
   margin-top:28px;
 }
+
 .btn{
+  min-height:48px;
+  padding:12px 22px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:9px;
-  padding:13px 22px;
-  border-radius:12px;
-  font-weight:650;
-  font-size:.92rem;
-  text-decoration:none;
-  transition:.22s;
-  border:1px solid transparent;
-  min-height:48px;
-}
-.btn-primary{
-  color:#06111d;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-}
-.btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 34px rgba(79,140,255,.24);
-}
-.btn-secondary{
-  color:#fff;
-  border-color:var(--border);
-  background:rgba(255,255,255,.04);
-}
-.btn-secondary:hover{
-  background:rgba(255,255,255,.08);
-  transform:translateY(-2px);
-}
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:44px;
-}
-.metric{
-  background:rgba(255,255,255,.03);
   border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
+  border-radius:11px;
+  text-decoration:none;
+  font-size:.91rem;
+  font-weight:700;
 }
+
+.btn-primary{
+  background:linear-gradient(110deg,#5791ff,#83def5);
+  border-color:transparent;
+  color:#07121c;
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.035);
+  color:var(--text);
+}
+
+.metrics{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+
+.metric{
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  min-width:0;
+}
+
 .metric strong{
   display:block;
-  font-family:'Sora',sans-serif;
-  font-size:1.45rem;
+  font-size:1.6rem;
   color:#fff;
-  line-height:1.1;
+  line-height:1.2;
 }
+
 .metric span{
   display:block;
-  margin-top:5px;
   color:var(--muted);
-  font-size:.78rem;
+  font-size:.8rem;
+  margin-top:7px;
 }
-.profile-photo{
-  position:absolute;
-  top:105px;
-  right:28px;
-  width:230px;
-  height:auto;
-  z-index:3;
-  pointer-events:none;
-}
-.profile-photo img{
-  width:100%;
-  height:auto;
-  -webkit-mask-image:linear-gradient(to bottom,black 62%,transparent 100%);
-  mask-image:linear-gradient(to bottom,black 62%,transparent 100%);
-}
-section{
+
+.section{
   padding:78px 0;
   border-top:1px solid var(--border);
 }
+
 .section-head{
-  margin-bottom:36px;
+  max-width:720px;
+  margin-bottom:30px;
 }
-.section-label{
-  color:var(--accent-2);
+
+.label{
+  color:var(--cyan);
   font-size:.72rem;
   font-weight:700;
-  letter-spacing:.16em;
   text-transform:uppercase;
+  letter-spacing:.15em;
 }
+
 h2{
-  font-family:'Sora',sans-serif;
-  font-size:clamp(1.65rem,5.5vw,2.45rem);
-  letter-spacing:-.7px;
-  color:#fff;
-  margin:10px 0 12px;
+  color:#f5f8fc;
+  font-size:clamp(1.7rem,3vw,2.35rem);
+  line-height:1.2;
+  letter-spacing:-.035em;
+  margin:10px 0 15px;
 }
-.section-head p{
-  color:var(--muted);
-  font-size:.97rem;
-}
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-}
-.grid-3{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-}
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:24px;
-  transition:.25s;
-}
-.card:hover{
-  background:var(--surface-2);
-  border-color:rgba(126,224,255,.28);
-  transform:translateY(-3px);
-}
-.card h3{
-  font-family:'Sora',sans-serif;
-  color:#fff;
-  font-size:1.08rem;
-  margin-bottom:9px;
-}
+
+.section-head p,
 .card p{
   color:var(--muted);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+  gap:18px;
+}
+
+.card{
+  min-width:0;
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:var(--surface);
+  overflow-wrap:anywhere;
+}
+
+.card h3{
+  font-size:1.08rem;
+  line-height:1.45;
+  color:#f2f6fb;
+  margin-bottom:12px;
+}
+
+.card p{
   font-size:.93rem;
 }
+
+.card p + p{
+  margin-top:14px;
+}
+
 .tags{
   display:flex;
   flex-wrap:wrap;
   gap:7px;
-  margin-top:16px;
+  margin-top:18px;
 }
+
 .tag{
-  font-size:.68rem;
-  font-weight:600;
-  color:var(--accent-2);
-  background:rgba(126,224,255,.08);
-  border:1px solid rgba(126,224,255,.18);
-  padding:5px 10px;
+  color:var(--cyan);
+  border:1px solid rgba(131,222,245,.15);
+  background:rgba(131,222,245,.055);
+  padding:4px 10px;
   border-radius:999px;
+  font-size:.7rem;
 }
-.link{
+
+.project{
+  display:flex;
+  flex-direction:column;
+}
+
+.project .tags{
+  margin-bottom:14px;
+}
+
+.project-link{
+  margin-top:auto;
+  padding-top:12px;
+  min-height:44px;
   display:inline-flex;
   align-items:center;
-  gap:7px;
-  margin-top:18px;
-  color:var(--accent-2);
-  font-weight:650;
+  align-self:flex-start;
+  color:var(--cyan);
+  font-weight:700;
   font-size:.86rem;
   text-decoration:none;
 }
-.link:hover{text-decoration:underline}
-.panel{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:24px;
+
+.project-link:hover{
+  text-decoration:underline;
 }
-.panel h3{
-  font-family:'Sora',sans-serif;
-  color:#fff;
-  margin-bottom:14px;
-}
-.skill-row{
+
+.language{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  padding:12px 0;
+  flex-wrap:wrap;
+  gap:10px;
+  padding:13px 0;
   border-bottom:1px solid var(--border);
-  font-size:.9rem;
+  font-size:.92rem;
 }
-.skill-row:last-child{border-bottom:0}
-.skill-row span:last-child{
-  color:var(--accent-2);
-  font-size:.72rem;
-  font-weight:650;
+
+.language:last-child{
+  border-bottom:0;
 }
-.experience-card small{
+
+.language span:last-child{
+  color:var(--cyan);
+}
+
+.date{
   display:block;
-  color:var(--accent-2);
-  font-size:.74rem;
-  font-weight:650;
-  margin-bottom:9px;
+  color:var(--cyan);
+  font-size:.78rem;
+  margin-bottom:12px;
 }
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
+
 .contact-card{
   display:block;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
   text-decoration:none;
-  transition:.22s;
+  min-height:112px;
 }
-.contact-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(126,224,255,.3);
-  background:var(--surface-2);
-}
+
 .contact-card strong{
   display:block;
-  color:#fff;
-  margin-bottom:5px;
+  margin-bottom:8px;
 }
+
 .contact-card span{
   color:var(--muted);
   font-size:.87rem;
-  word-break:break-word;
+  overflow-wrap:anywhere;
 }
+
 footer{
   border-top:1px solid var(--border);
-  padding:28px 0;
   text-align:center;
   color:var(--muted);
+  padding:28px 0;
   font-size:.8rem;
 }
-footer strong{color:#fff}
-.reveal{
-  opacity:0;
-  transform:translateY(20px);
-  transition:.65s cubic-bezier(.2,.7,.2,1);
-}
-.reveal.active{
-  opacity:1;
-  transform:none;
-}
-@media(min-width:720px){
-  .grid-3{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:repeat(2,1fr)}
-  .metrics{grid-template-columns:repeat(4,1fr)}
-}
-@media(min-width:1000px){
-  .grid-2{grid-template-columns:1.15fr .85fr}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
-  .contact-grid{grid-template-columns:repeat(3,1fr)}
-  .profile-photo{
-    top:120px;
-    right:48px;
-    width:270px;
+
+@media(hover:hover){
+  .btn:hover{
+    filter:brightness(1.1);
+  }
+
+  .contact-card:hover{
+    border-color:rgba(131,222,245,.35);
+    background:var(--surface-hover);
   }
 }
-@media(max-width:860px){
-  .desktop-links{display:none}
-  .menu-btn{display:flex;align-items:center;justify-content:center}
-}
-@media(max-width:520px){
-  .container{padding:0 16px}
-  .hero{padding:100px 0 60px}
-  .profile-photo{
-    width:130px;
-    top:92px;
-    right:12px;
+
+@media(max-width:960px){
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
-  .hero-actions .btn{
+
+  .hero-layout{
+    gap:25px;
+    grid-template-columns:minmax(0,1.5fr) minmax(180px,.8fr);
+  }
+}
+
+@media(max-width:800px){
+  .nav{
+    flex-wrap:wrap;
+    gap:0;
+  }
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .nav-links{
     width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:5px;
+    padding-bottom:16px;
   }
-  .card,.panel{padding:20px}
-  section{padding:64px 0}
+
+  .nav-links a{
+    min-height:44px;
+    padding:11px 13px;
+  }
+
+  .js .nav-links{
+    display:none;
+  }
+
+  .js .nav-links.is-open{
+    display:flex;
+  }
+
+  .hero{
+    padding:32px 0 48px;
+  }
+
+  .hero-layout{
+    grid-template-columns:minmax(0,1fr);
+    gap:12px;
+  }
+
+  .profile-photo{
+    grid-column:1;
+    grid-row:1;
+    width:min(57%,230px);
+    justify-self:end;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+  .hero-copy{
+    grid-column:1;
+    grid-row:2;
+  }
+
+  h1{
+    font-size:clamp(2.1rem,7vw,3.15rem);
+    max-width:650px;
+  }
+
+  .about-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .metrics{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin-top:32px;
+  }
+
+  .section{
+    padding:58px 0;
+  }
+}
+
+@media(max-width:540px){
+  .container{
+    width:calc(100% - 32px);
+  }
+
+  .grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .profile-photo{
+    width:min(62%,210px);
+  }
+
+  h1{
+    margin:18px 0;
+  }
+
+  .intro{
+    font-size:.96rem;
+  }
+
+  .actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .actions .btn-primary{
+    grid-column:1 / -1;
+  }
+
+  .btn{
+    padding:12px;
+  }
+
+  .metric{
+    padding:18px 15px;
+  }
+
+  .card{
+    padding:22px;
+  }
+
+  .eyebrow{
+    font-size:.6rem;
+    letter-spacing:.055em;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
 }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header>
   <div class="container nav">
-    <a href="#top" class="logo">Syad<span>.dev</span></a>
+    <a href="#top" class="logo" aria-label="Syad home">
+      Syad<span>.dev</span>
+    </a>
 
-    <nav class="desktop-links">
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="navigation"
+      hidden>
+      <span class="menu-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav class="nav-links" id="navigation" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
-      <a href="#awards">Awards</a>
-      <a class="nav-cta" href="#contact">Contact</a>
+      <a href="#awards">Achievements</a>
+      <a href="#contact" class="nav-contact">Contact</a>
     </nav>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#awards">Awards</a>
-  <a class="nav-cta" href="#contact">Contact</a>
-</div>
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="container">
 
-<main id="top">
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
+      <div class="hero-layout">
 
-    <div class="profile-photo">
-      <img src="profile.png" alt="Syad Mehedi Hasan Alvi">
-    </div>
+        <div class="profile-photo">
+          <img
+            src="profile.png"
+            alt="Portrait of Syad Mehedi Hasan Alvi"
+            fetchpriority="high"
+            decoding="async">
+        </div>
 
-    <div class="container hero-inner">
-      <div class="eyebrow"><i></i> Available for collaboration</div>
-      <h1>Software engineer building <span class="highlight">AI, IoT, and autonomous systems.</span></h1>
-      <p>
-        I’m <strong>Syad Mehedi Hasan Alvi</strong>, a Computer Science and Engineering student at United International University.
-        I design and build practical software products, computer-vision prototypes, Android tools, IoT concepts, and full-stack web applications.
-      </p>
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Open to learning & collaboration
+          </div>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-secondary" href="https://github.com/alvi164" target="_blank">GitHub</a>
-        <a class="btn btn-secondary" href="mailto:syadalvi@gmail.com">Email Me</a>
+          <h1 id="hero-title">
+            CSE student building
+            <span class="highlight">software, AI & IoT projects.</span>
+          </h1>
+
+          <p class="intro">
+            I’m <strong>Syad Mehedi Hasan Alvi</strong>, a Computer
+            Science and Engineering student at United International
+            University. I learn by building practical software,
+            computer-vision prototypes, Android tools, and
+            full-stack web applications.
+          </p>
+
+          <p class="location">Based in Dhaka, Bangladesh</p>
+
+          <div class="actions">
+            <a href="#projects" class="btn btn-primary">
+              Explore my projects
+            </a>
+            <a
+              href="https://github.com/alvi164"
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a href="mailto:syadalvi@gmail.com" class="btn btn-secondary">
+              Email me
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="metrics">
-        <div class="metric"><strong>6+</strong><span>Major Projects</span></div>
-        <div class="metric"><strong>840</strong><span>GFG Coding Score</span></div>
-        <div class="metric"><strong>181</strong><span>Problems Solved</span></div>
-        <div class="metric"><strong>450+</strong><span>Participants Served</span></div>
+      <div class="metrics" aria-label="Portfolio highlights">
+        <div class="metric">
+          <strong>6</strong>
+          <span>Featured projects</span>
+        </div>
+        <div class="metric">
+          <strong>840</strong>
+          <span>GFG coding score</span>
+        </div>
+        <div class="metric">
+          <strong>181</strong>
+          <span>Problems solved</span>
+        </div>
+        <div class="metric">
+          <strong>450+</strong>
+          <span>Club participants served</span>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <section id="about">
+  <section class="section" id="about">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Profile</div>
-        <h2>Engineering practical solutions</h2>
+      <div class="section-head">
+        <span class="label">About me</span>
+        <h2>Learning through practical projects</h2>
         <p>
-          I focus on building reliable, useful, and presentable technology: from real-time computer vision and signal processing to Android applications, IoT systems, REST APIs, and full-stack products.
+          I enjoy connecting classroom concepts with hands-on
+          development, exploring how software, intelligent systems,
+          and hardware can work together.
         </p>
       </div>
 
-      <div class="grid-2">
-        <div class="panel reveal">
-          <h3>Current Focus</h3>
+      <div class="about-grid">
+        <div class="card">
+          <h3>What I’m exploring</h3>
           <p>
-            I am interested in autonomous systems, robotics, sensor fusion, path planning, real-time perception, embedded systems, and AI-assisted software.
+            My interests include robotics, autonomous systems,
+            sensor fusion, path planning, computer vision,
+            and embedded development.
           </p>
-          <p style="margin-top:14px">
-            My goal is to combine strong engineering fundamentals with practical product thinking to build systems that solve real problems.
+          <p>
+            Alongside technical projects, I contribute to student
+            leadership, educational content, and outreach.
+            I’m developing my skills through experimentation,
+            teamwork, and continuous learning.
           </p>
           <div class="tags">
-            <span class="tag">Autonomous Systems</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">IoT</span>
+            <span class="tag">Computer vision</span>
             <span class="tag">AI/ML</span>
-            <span class="tag">Full-Stack</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Robotics</span>
             <span class="tag">Android</span>
+            <span class="tag">Full-stack</span>
           </div>
         </div>
 
-        <div class="panel reveal">
+        <div class="card">
           <h3>Languages</h3>
-          <div class="skill-row"><span>Bangla</span><span>Native</span></div>
-          <div class="skill-row"><span>English</span><span>C1</span></div>
-          <div class="skill-row"><span>Hindi / Urdu</span><span>B1</span></div>
+          <div class="language">
+            <span>Bangla</span><span>Native</span>
+          </div>
+          <div class="language">
+            <span>English</span><span>C1</span>
+          </div>
+          <div class="language">
+            <span>Hindi / Urdu</span><span>B1</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
+  <section class="section" id="skills">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Technical Skills</div>
-        <h2>Engineering toolkit</h2>
-        <p>Experience across programming, AI, computer vision, embedded systems, mobile development, backend services, and modern web technologies.</p>
+      <div class="section-head">
+        <span class="label">Technical skills</span>
+        <h2>Tools I work with</h2>
+        <p>
+          Technologies and concepts I use and continue to develop
+          through coursework and independent projects.
+        </p>
       </div>
 
-      <div class="grid-3">
-        <div class="card reveal">
+      <div class="grid">
+        <article class="card">
           <h3>Programming</h3>
-          <p>Python, Java, C++, Kotlin, TypeScript, Embedded C, HTML, and CSS.</p>
+          <p>
+            Python, Java, C++, Kotlin, TypeScript, Embedded C,
+            HTML, and CSS.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>AI & computer vision</h3>
+          <p>
+            TensorFlow, Keras, OpenCV, NumPy, SciPy,
+            CNN training, and real-time inference.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Web & backend</h3>
+          <p>
+            React 19, Spring Boot, Firebase, REST APIs,
+            Git, and TCP/UDP networking.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Embedded & mobile</h3>
+          <p>
+            Android SDK, sensor integration, Arduino IDE,
+            Proteus, and IoT concepts.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Algorithms & data</h3>
+          <p>
+            Data structures, graph algorithms, path planning,
+            signal filtering, and problem solving.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Leadership & communication</h3>
+          <p>
+            Content creation, public relations, brand promotion,
+            event coordination, and business development.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Projects</span>
+        <h2>Selected work</h2>
+        <p>
+          A selection of my software projects and research prototypes.
+          Explore the repositories for implementation details.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card project">
+          <h3>PLIS 1.1.0</h3>
+          <p>
+            Programming Lab Integrity Suite: a Java classroom
+            monitoring system with UDP discovery, TCP code syncing,
+            BCrypt hashing, focus-event telemetry, and Windows
+            installer packaging.
+          </p>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">TCP/UDP</span>
+            <span class="tag">PowerShell</span>
+            <span class="tag">WiX</span>
+          </div>
+          <a class="project-link"
+             href="https://github.com/alvi164/PLIS-1.1.0"
+             target="_blank" rel="noopener noreferrer">
+            View PLIS repository →
+          </a>
+        </article>
+
+        <article class="card project">
+          <h3>NeuroSketch AI</h3>
+          <p>
+            Kinematic signal-processing prototype using
+            Butterworth filtering for tremor and hesitation
+            analysis, a Spring Boot API, and a PySide6
+            visualization dashboard.
+          </p>
           <div class="tags">
             <span class="tag">Python</span>
-            <span class="tag">Java</span>
-            <span class="tag">C++</span>
-            <span class="tag">Kotlin</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">PySide6</span>
+            <span class="tag">Spring Boot</span>
           </div>
-        </div>
+          <a class="project-link"
+             href="https://github.com/alvi164/NeuroSketch-AI"
+             target="_blank" rel="noopener noreferrer">
+            View NeuroSketch repository →
+          </a>
+        </article>
 
-        <div class="card reveal">
-          <h3>AI & Computer Vision</h3>
-          <p>TensorFlow, Keras, OpenCV, NumPy, SciPy, CNN training, and real-time inference.</p>
+        <article class="card project">
+          <h3>Emotion Detection Engine</h3>
+          <p>
+            Computer-vision project using a custom convolutional
+            neural network for multi-class facial emotion
+            recognition and real-time webcam inference.
+          </p>
           <div class="tags">
             <span class="tag">TensorFlow</span>
             <span class="tag">Keras</span>
             <span class="tag">OpenCV</span>
           </div>
-        </div>
+          <a class="project-link"
+             href="https://github.com/alvi164/Emotion-Detection-Core-Engine"
+             target="_blank" rel="noopener noreferrer">
+            View emotion detection repository →
+          </a>
+        </article>
 
-        <div class="card reveal">
-          <h3>Software & Systems</h3>
-          <p>Git, REST APIs, Spring Boot, React 19, Firebase, and TCP/UDP networking.</p>
-          <div class="tags">
-            <span class="tag">Spring Boot</span>
-            <span class="tag">React 19</span>
-            <span class="tag">Firebase</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3>Embedded & Mobile</h3>
-          <p>Android SDK, sensor integration, Arduino IDE, Proteus, IoT concepts, and background services.</p>
-          <div class="tags">
-            <span class="tag">Android</span>
-            <span class="tag">Arduino</span>
-            <span class="tag">IoT</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3>Algorithms & Data</h3>
-          <p>Data structures, graph algorithms, path planning, signal filtering, and problem solving.</p>
-          <div class="tags">
-            <span class="tag">DSA</span>
-            <span class="tag">Graphs</span>
-            <span class="tag">Path Planning</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3>Leadership & Outreach</h3>
-          <p>Brand promotion, content creation, public relations, business development, and event coordination.</p>
-          <div class="tags">
-            <span class="tag">Leadership</span>
-            <span class="tag">PR</span>
-            <span class="tag">Content</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Projects</div>
-        <h2>Selected work</h2>
-        <p>A selection of systems I have designed and built across desktop software, AI, Android, IoT, research, and full-stack web development.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card reveal">
-          <h3>PLIS 1.1.0 — Programming Lab Integrity Suite</h3>
-          <p>
-            Classroom monitoring system using Java, UDP multicast discovery, dynamic TCP ports, live code syncing, BCrypt security, telemetry, PowerShell, and WiX installer packaging.
-          </p>
-          <div class="tags">
-            <span class="tag">Java</span>
-            <span class="tag">UDP</span>
-            <span class="tag">TCP</span>
-            <span class="tag">WiX</span>
-          </div>
-          <a class="link" href="https://github.com/alvi164/PLIS-1.1.0" target="_blank">View project →</a>
-        </div>
-
-        <div class="card reveal">
-          <h3>NeuroSketch AI — Kinematic Signal Processing</h3>
-          <p>
-            Research prototype using high-resolution sensors, Butterworth filtering, tremor and hesitation analysis, Spring Boot REST API, H2 database, and PySide6 real-time visualization.
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SciPy</span>
-            <span class="tag">Spring Boot</span>
-          </div>
-          <a class="link" href="https://github.com/alvi164/NeuroSketch-AI" target="_blank">View project →</a>
-        </div>
-
-        <div class="card reveal">
-          <h3>Real-Time Emotion Detection Engine</h3>
-          <p>
-            Custom CNN trained from scratch for multi-class facial emotion recognition, optimized for high-frame-rate webcam inference using TensorFlow, Keras, and OpenCV.
-          </p>
-          <div class="tags">
-            <span class="tag">TensorFlow</span>
-            <span class="tag">CNN</span>
-            <span class="tag">OpenCV</span>
-          </div>
-          <a class="link" href="https://github.com/alvi164/Emotion-Detection-Core-Engine" target="_blank">View project →</a>
-        </div>
-
-        <div class="card reveal">
+        <article class="card project">
           <h3>Emergency-Security Calculator</h3>
           <p>
-            Stealth Android application disguised as a calculator that detects a triple-shake gesture and triggers discreet dual-camera audio/video evidence capture.
+            Android emergency-tool project exploring a
+            calculator interface, gesture-based sensor triggers,
+            and audio/video capture workflows.
           </p>
           <div class="tags">
             <span class="tag">Kotlin</span>
             <span class="tag">Android SDK</span>
             <span class="tag">Sensors</span>
           </div>
-          <a class="link" href="https://github.com/alvi164/Emergency-Security-Calculator" target="_blank">View project →</a>
-        </div>
+          <a class="project-link"
+             href="https://github.com/alvi164/Emergency-Security-Calculator"
+             target="_blank" rel="noopener noreferrer">
+            View Android project →
+          </a>
+        </article>
 
-        <div class="card reveal">
-          <h3>Bashar Chabi v2 — Rental Marketplace</h3>
+        <article class="card project">
+          <h3>Bashar Chabi v2</h3>
           <p>
-            Mobile-first bilingual Bangla/English PWA with offline support, install prompt, Firebase Auth, Firestore, role-based dashboards, moderation queues, and state-machine validation.
+            Bilingual Bangla/English rental and services PWA
+            with offline features, Firebase authentication,
+            role-based dashboards, and moderation workflows.
           </p>
           <div class="tags">
             <span class="tag">React 19</span>
             <span class="tag">TypeScript</span>
             <span class="tag">Firebase</span>
+            <span class="tag">PWA</span>
           </div>
-          <a class="link" href="https://github.com/alvi164/bashar-chabi-v2" target="_blank">View project →</a>
-        </div>
+          <a class="project-link"
+             href="https://github.com/alvi164/bashar-chabi-v2"
+             target="_blank" rel="noopener noreferrer">
+            View Bashar Chabi repository →
+          </a>
+        </article>
 
-        <div class="card reveal">
+        <article class="card project">
           <h3>Blast Radius Analyzer</h3>
           <p>
-            Automated release impact analysis system using knowledge graphs, GitLab REST APIs, FastAPI, OpenAI API, CI/CD, and continuous testing/deployment pipelines.
+            Hackathon project for release-impact analysis using
+            knowledge graphs, GitLab APIs, FastAPI, and AI,
+            supported by CI/CD workflows.
           </p>
           <div class="tags">
             <span class="tag">FastAPI</span>
             <span class="tag">GitLab API</span>
+            <span class="tag">OpenAI API</span>
             <span class="tag">CI/CD</span>
           </div>
-          <a class="link" href="https://gitlab.com/syadalvi-group/blast-radius-analyzer/" target="_blank">View project →</a>
-        </div>
+          <a class="project-link"
+             href="https://gitlab.com/syadalvi-group/blast-radius-analyzer/"
+             target="_blank" rel="noopener noreferrer">
+            View analyzer repository →
+          </a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="experience">
+  <section class="section" id="experience">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Experience</div>
-        <h2>Experience & leadership</h2>
-        <p>Technical work combined with leadership, outreach, branding, and cross-team coordination.</p>
+      <div class="section-head">
+        <span class="label">Experience</span>
+        <h2>Leadership & involvement</h2>
+        <p>
+          Experiences in student leadership, technical content,
+          AI evaluation, and startup outreach.
+        </p>
       </div>
 
-      <div class="grid-3">
-        <div class="card experience-card reveal">
-          <h3>UIU HR Forum — General Secretary</h3>
-          <small>Nov 2026 – Present</small>
-          <p>Lead the executive body of a university club serving 450+ participants, overseeing event operations, external partnerships, and public relations.</p>
-        </div>
+      <div class="grid">
+        <article class="card">
+          <h3>General Secretary · UIU HR Forum</h3>
+          <span class="date">November 2026 – Present</span>
+          <p>
+            Lead the executive body of a university club serving
+            450+ participants, coordinating events, partnerships,
+            and public relations.
+          </p>
+        </article>
 
-        <div class="card experience-card reveal">
-          <h3>UIU HR Forum — HR Executive</h3>
-          <small>Apr 2025 – Nov 2026</small>
-          <p>Managed the CaseCation Season 3 partnership with Rajshahi University Business Club and helped deliver Professional Skills Development Program 4.0.</p>
-        </div>
+        <article class="card">
+          <h3>HR Executive · UIU HR Forum</h3>
+          <span class="date">April 2025 – November 2026</span>
+          <p>
+            Coordinated outreach for CaseCation Season 3 with
+            Rajshahi University Business Club and supported
+            Professional Skills Development Program 4.0.
+          </p>
+        </article>
 
-        <div class="card experience-card reveal">
-          <h3>Amar Fuel — Marketing Intern</h3>
-          <small>Nov 2026 – Present</small>
-          <p>Drive brand promotion and content creation for an AI-powered fuel-automation and IoT startup, supporting business development and corporate outreach.</p>
-        </div>
+        <article class="card">
+          <h3>Marketing Intern · Amar Fuel</h3>
+          <span class="date">November 2026 – Present</span>
+          <p>
+            Support content creation, brand promotion, and
+            business outreach for an AI-powered fuel-automation
+            and IoT startup.
+          </p>
+        </article>
 
-        <div class="card experience-card reveal">
-          <h3>Quantum Curiosity — Technical Educator</h3>
-          <small>2024 – Present</small>
-          <p>Create educational YouTube content on algorithms and computational reasoning, strengthening technical communication and public speaking.</p>
-        </div>
+        <article class="card">
+          <h3>Content Creator · Quantum Curiosity</h3>
+          <span class="date">2024 – Present</span>
+          <p>
+            Create educational videos about algorithms and
+            computational reasoning, developing technical
+            communication and presentation skills.
+          </p>
+        </article>
 
-        <div class="card experience-card reveal">
-          <h3>Outlier AI — AI Trainer & Evaluator</h3>
-          <small>2026 | Remote</small>
-          <p>Conducted RLHF for large language models, including quality assurance, evaluation, and error analysis.</p>
-        </div>
+        <article class="card">
+          <h3>AI Trainer & Evaluator · Outlier AI</h3>
+          <span class="date">2026 · Remote</span>
+          <p>
+            Worked on large-language-model evaluation and
+            reinforcement learning from human feedback,
+            including quality checks and error analysis.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="awards">
+  <section class="section" id="awards">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Recognition</div>
-        <h2>Awards & achievements</h2>
-        <p>Recognition across coding, hackathons, business strategy, and academic performance.</p>
+      <div class="section-head">
+        <span class="label">Recognition</span>
+        <h2>Achievements & participation</h2>
       </div>
 
-      <div class="grid-3">
-        <div class="card reveal">
-          <h3>GeeksforGeeks — Institute Rank 1</h3>
-          <p>142-day Problem of the Day streak, coding score 840, and 181 problems solved.</p>
-        </div>
+      <div class="grid">
+        <article class="card">
+          <h3>GeeksforGeeks</h3>
+          <p>
+            Institute Rank 1, coding score 840, 181 problems
+            solved, and a 142-day Problem of the Day streak.
+          </p>
+        </article>
 
-        <div class="card reveal">
-          <h3>Hackathon Awards</h3>
-          <p>Awarded a total of $200 in Codex Credits — $100 each for Dhaka TechMatch and LastCall Eats.</p>
-        </div>
+        <article class="card">
+          <h3>Hackathon recognition</h3>
+          <p>
+            Received $200 in total Codex Credits:
+            $100 each for Dhaka TechMatch and LastCall Eats.
+          </p>
+        </article>
 
-        <div class="card reveal">
+        <article class="card">
           <h3>Young CEO Challenge 2026</h3>
-          <p>Certificate of Participation from PACE & UITM for supply-chain resilience strategy in a competitive business simulation.</p>
-        </div>
+          <p>
+            Certificate of Participation from PACE & UITM
+            for supply-chain resilience strategy in a
+            competitive business simulation.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section class="section" id="contact">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="section-label">Contact</div>
-        <h2>Let’s build something meaningful</h2>
-        <p>Open to collaboration on AI, robotics, IoT, software products, hackathons, research prototypes, and creative technology projects.</p>
+      <div class="section-head">
+        <span class="label">Contact</span>
+        <h2>Let’s learn and build together</h2>
+        <p>
+          Open to student collaborations, internships,
+          hackathons, research prototypes, and practical
+          software projects.
+        </p>
       </div>
 
-      <div class="contact-grid">
-        <a class="contact-card reveal" href="mailto:syadalvi@gmail.com">
+      <div class="grid">
+        <a class="card contact-card" href="mailto:syadalvi@gmail.com">
           <strong>Email</strong>
           <span>syadalvi@gmail.com</span>
         </a>
-        <a class="contact-card reveal" href="tel:+8801810761093">
+
+        <a class="card contact-card" href="tel:+8801810761093">
           <strong>Phone</strong>
           <span>+880 1810 761093</span>
         </a>
-        <a class="contact-card reveal" href="https://github.com/alvi164" target="_blank">
+
+        <a class="card contact-card"
+           href="https://github.com/alvi164"
+           target="_blank" rel="noopener noreferrer">
           <strong>GitHub</strong>
           <span>github.com/alvi164</span>
         </a>
-        <a class="contact-card reveal" href="https://linkedin.com/in/syad-mehedi-hasan-alvi" target="_blank">
+
+        <a class="card contact-card"
+           href="https://linkedin.com/in/syad-mehedi-hasan-alvi"
+           target="_blank" rel="noopener noreferrer">
           <strong>LinkedIn</strong>
           <span>syad-mehedi-hasan-alvi</span>
         </a>
-        <a class="contact-card reveal" href="https://youtube.com/@edu.quantumcuriosity" target="_blank">
+
+        <a class="card contact-card"
+           href="https://youtube.com/@edu.quantumcuriosity"
+           target="_blank" rel="noopener noreferrer">
           <strong>YouTube</strong>
           <span>@edu.quantumcuriosity</span>
         </a>
-        <a class="contact-card reveal" href="https://www.geeksforgeeks.org/profile/salvi222164" target="_blank">
+
+        <a class="card contact-card"
+           href="https://www.geeksforgeeks.org/profile/salvi222164"
+           target="_blank" rel="noopener noreferrer">
           <strong>GeeksforGeeks</strong>
           <span>salvi222164</span>
         </a>
@@ -840,37 +1156,64 @@ footer strong{color:#fff}
 
 <footer>
   <div class="container">
-    <p>© <span id="year"></span> <strong>Syad Mehedi Hasan Alvi</strong> — Built with purpose.</p>
+    <p>
+      © <span id="year">2026</span> Syad Mehedi Hasan Alvi.
+      Learning. Building. Improving.
+    </p>
   </div>
 </footer>
 
 <script>
-const menuBtn=document.getElementById('menuBtn');
-const mobileMenu=document.getElementById('mobileMenu');
+(function(){
+  const toggle = document.getElementById("menuToggle");
+  const navigation = document.getElementById("navigation");
 
-menuBtn.addEventListener('click',()=>{
-  mobileMenu.classList.toggle('open');
-});
+  document.documentElement.classList.add("js");
+  toggle.hidden = false;
 
-document.querySelectorAll('.mobile-menu a').forEach(link=>{
-  link.addEventListener('click',()=>{
-    mobileMenu.classList.remove('open');
+  function setMenu(open){
+    navigation.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
+    );
+  }
+
+  toggle.addEventListener("click", function(){
+    setMenu(toggle.getAttribute("aria-expanded") !== "true");
   });
-});
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
+  navigation.querySelectorAll("a").forEach(function(link){
+    link.addEventListener("click", function(){
+      setMenu(false);
+    });
+  });
+
+  document.addEventListener("keydown", function(event){
+    if(event.key === "Escape" &&
+       toggle.getAttribute("aria-expanded") === "true"){
+      setMenu(false);
+      toggle.focus();
     }
   });
-},{threshold:.12});
 
-document.querySelectorAll('.reveal').forEach(element=>{
-  observer.observe(element);
-});
+  document.addEventListener("click", function(event){
+    if(!navigation.contains(event.target) &&
+       !toggle.contains(event.target)){
+      setMenu(false);
+    }
+  });
 
-document.getElementById('year').textContent=new Date().getFullYear();
+  const desktopQuery = window.matchMedia("(min-width:801px)");
+  desktopQuery.addEventListener("change", function(){
+    setMenu(false);
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+})();
 </script>
+
 </body>
 </html>
